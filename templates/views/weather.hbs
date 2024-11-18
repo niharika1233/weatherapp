@@ -1,104 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     {{>headerLinks}}
-
-    </head>
+</head>
 <body>
 
     {{>navbar}}
 
     <!-- main header -->
     <div class="container-fluid main_header">
-      <div class="row">
-      <div class="col-md-10 col-12 mx-auto">
-        <div class="main_content">
-            <form class="temp_form">
-                <input type="text" id="cityName" placeholder="Enter Your city name" autocomplete="off">
-                <input type="submit" value="search" id="submitBtn">
-            </form>
-        <div class="tempInformation">
-            <div class="top_layer">
-                <p id="day">Tuesday</p>
-                <p id="today_date">13 OCT</p>
-            </div>
-            <div class="main_layer ">
-                <p  id="city_name">Get Output Here</p>
-                <div class="middle_layer  data_hide">
-                    <p id="temp"><span id=temp_real_val>0</span><sup>o</sup>C</p>
-                    <p id="temp_status"> <i class="fa fa-cloud" aria-hidden="true"></i></p>
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form">
+                        <input type="text" id="cityName" placeholder="Enter Your city name" autocomplete="off">
+                        <input type="submit" value="search" id="submitBtn">
+                    </form>
+                    <div class="tempInformation">
+                        <div class="top_layer">
+                            <p id="day">Tuesday</p>
+                            <p id="today_date">13 OCT</p>
+                        </div>
+                        <div class="main_layer">
+                            <div class="middle_layer data_hide">
+                            <!--    <p id="temp"><span id="temp_real_val">0</span><sup>o</sup>C</p>
+                                <p id="temp_status"> <i class="fa fa-cloud" aria-hidden="true"></i></p>-->
+                                
+                             <!--   {% comment %} <p id="latitude" style="font-size: 12px; font-weight: normal; color: #fff; margin-top: 5px;">Latitude: </p>
+                                <p id="longitude" style="font-size: 12px; font-weight: normal; color: #fff; margin-top: 5px;">Longitude: </p>
+                                <p id="humidity" style="font-size: 12px; font-weight: normal; color: #fff; margin-top: 5px;">Humidity: </p>
+                                 {% endcomment %}
+                             -->
+                        <!--   <table style="color: #fff; font-size: 14px; font-weight: normal; margin-top: 10px; border-collapse: collapse;">
+                                <tr>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Temperature:</th>
+                                    <td id="temp" style="padding: 5px; border: 1px solid #ccc;">
+                                        <span id="temp_real_val"></span><sup>o</sup>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px; border: 1px solid #ccc;">Status:</td>
+                                    <td id="temp_status" style="padding: 5px; border: 1px solid #ccc;">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </td>
+                                </tr>
+                            </table>-->
+                            
+                             <table style="color: #fff; font-size: 12px; font-weight: normal; margin-top: 5px; border-collapse: collapse;">
+                                <tr>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">City</th>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Temperature</th>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Status</th>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Latitude</th>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Longitude</th>
+                                    <th style="padding: 5px; border: 1px solid #ccc;">Humidity</th>
+                                </tr>
+                                <tr>
+                                    <td id="city_name" style="padding: 5px; border: 1px solid #ccc;">N/A</td>
+                                    <td id="temp" style="padding: 5px; border: 1px solid #ccc;">
+                                       <span id="temp_real_val"></span><sup></sup>C
+                                    </td>
+                                <td id="temp_status" style="padding: 5px; border: 1px solid #ccc;">N/A
+                                      <!--  <i class="fa fa-cloud" aria-hidden="true"></i>-->
+                                    </td>
+                                    
+                                    <!--<td id="temp" style="padding: 5px; border: 1px solid #ccc;">N/A</td>-->
+                                    <td id="latitude" style="padding: 5px; border: 1px solid #ccc;">N/A</td>
+                                    
+                                    <td id="longitude" style="padding: 5px; border: 1px solid #ccc;">N/A</td>
+                                    <td id="humidity" style="padding: 5px; border: 1px solid #ccc;">N/A</td>
+                                </tr>
+               
+                            </table>
+                            
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        
-        <!-- footer -->
+    </div>
 
-        {{>footer}}
+    <!-- footer -->
+    {{>footer}}
 
-        <script src="js/main.js"></script>
-        
-        <script>
-            //const curDate=document.getElementById('today_date');
+    <script src="js/main.js"></script>
 
-            const getcurrentDay=() =>{
-            let weekday=new Array(7);   
-            
-            weekday[0]="Sunday";
-            weekday[1]="Monday";
-            weekday[2]="Tuesday";
-            weekday[3]="Wednesday";
-            weekday[4]="Thursday";
-            weekday[5]="Friday";
-            weekday[6]="Saturday";
+    <script>
+        // Function to get the current day
+        const getcurrentDay = () => {
+            const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const currentTime = new Date();
+            const days = weekday[currentTime.getDay()];
+            const day = document.getElementById('day');
+            day.innerText = days;
+        };
 
-            let currentTime= new Date();
-             days= weekday[currentTime.getDay()];
-            let day= document.getElementById('day');
+        // Function to get the current date and month
+        const getcurrentMonth = () => {
+            const months = [
+                "Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"
+            ];
+            const now = new Date();
+            const month = months[now.getMonth()];
+            const date = now.getDate();
+            const today_date = document.getElementById('today_date');
+            today_date.innerText = `${date} ${month}`;
+        };
 
-            
-
-             day.innerText = days;
-             
-            };
-
-            const getcurrentMonth= ()=>{
-
-                let months=[
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "June",
-                    "July",
-                    "Aug",
-                    "Sept",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                ];
-
-                let now =new Date();
-                let month= months[now.getMonth()];
-                let date= now.getDate();
-                let today_date=document.getElementById('today_date');
-                
-                let today = `${date}  ${month}`;
-
-                today_date.innerText=today;
-               
-            };
-
-            getcurrentDay(); 
-            getcurrentMonth();
-          
-
-        </script>
-
+        // Call the functions to display day and month
+        getcurrentDay();
+        getcurrentMonth();
+    </script>
 </body>
 </html>
-
