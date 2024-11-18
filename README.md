@@ -66,15 +66,16 @@ The Weather App is a real-time project developed using JavaScript, CSS, Express 
  
  
  ![weather1](https://user-images.githubusercontent.com/66437295/110580105-f8d4ce80-818d-11eb-9c0f-36ad79cd95fd.png) 
- ![weather2](https://user-images.githubusercontent.com/66437295/110580231-35a0c580-818e-11eb-8dd4-02e6cdaa60d0.png)
 
 
+
  
  
  
  
  
- 
+ ![Screenshot 2024-11-18 145615](https://github.com/user-attachments/assets/95af4ef0-239d-47a2-b55e-88b598fb2e33)
+
  
  
  
